@@ -1,3 +1,6 @@
+This is PHP 7 adapted version of [hernantas MangaReader](https://github.com/hernantas/MangaReader) using [OpenSSL Functions](https://php.net/manual/en/ref.openssl.php)
+
+
 MangaReader
 =========
 

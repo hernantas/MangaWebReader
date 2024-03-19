@@ -15,7 +15,10 @@
         {
             try
             {
-                $this->pdo = new \PDO("mysql:host=$host;", $username, $password, [ \PDO::ATTR_ERRMODE => \PDO::ERRMODE_SILENT]);
+                $this->pdo = new \PDO("mysql:host=$host;", $username, $password, [
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_SILENT,
+                    \PDO::ATTR_EMULATE_PREPARES => false
+                ]);
             }
             catch (\PDOException $e)
             {

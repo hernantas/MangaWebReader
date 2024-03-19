@@ -13,8 +13,8 @@
 
         private $hashAlgo = 'sha1';
 
-        private $chiper = MCRYPT_RIJNDAEL_128;
-        private $mode = MCRYPT_MODE_CBC;
+        private $chiper = 'AES-128-ECB';
+        private $mode = 'AES-256-CBC';
 
         public function __construct()
         {
@@ -23,15 +23,15 @@
             if ($cfg === false || !isset($cfg['key']))
             {
                 $cfg['key'] = $this->createKey(32);
-                if (!isset($cfg['chiper'])) $cfg['chiper'] = MCRYPT_RIJNDAEL_128;
-                if (!isset($cfg['mode'])) $cfg['mode'] = MCRYPT_MODE_CBC;
+                if (!isset($cfg['chiper'])) $cfg['chiper'] = 'AES-128-ECB';
+                if (!isset($cfg['mode'])) $cfg['mode'] = 'AES-256-CBC';
 
                 page()->config->save('Encryption', $cfg);
             }
 
             $this->key = $cfg['key'];
-            $this->chiper = isset($cfg['chiper']) ? $cfg['chiper'] : MCRYPT_RIJNDAEL_128;
-            $this->mode = isset($cfg['mode']) ? $cfg['mode'] : MCRYPT_MODE_CBC;;
+            $this->chiper = isset($cfg['chiper']) ? $cfg['chiper'] : 'AES-128-ECB';
+            $this->mode = isset($cfg['mode']) ? $cfg['mode'] : 'AES-256-CBC';
         }
 
         /**
@@ -63,8 +63,8 @@
         public function encrypt($message)
         {
             $key = base64_decode($this->key);
-            $iv = $this->createKey(mcrypt_get_iv_size($this->chiper, $this->mode), true);
-            $chipper = mcrypt_encrypt($this->chiper, $key, $message, $this->mode, $iv);
+            $iv = $this->createKey(openssl_cipher_iv_length($this->chiper, $this->mode), true);
+            $chipper = openssl_encrypt($this->chiper, $key, $message, $this->mode, $iv);
             return base64_encode($iv.$chipper);
         }
 
@@ -79,10 +79,10 @@
         {
             $chipper = base64_decode($chipper);
             $key = base64_decode($this->key);
-            $iv = substr($chipper, 0, mcrypt_get_iv_size($this->chiper, $this->mode));
-            $chipper = substr($chipper, mcrypt_get_iv_size($this->chiper, $this->mode));
+            $iv = substr($chipper, 0, openssl_cipher_iv_length($this->chiper, $this->mode));
+            $chipper = substr($chipper, openssl_cipher_iv_length($this->chiper, $this->mode));
 
-            $message = mcrypt_decrypt($this->chiper, $key, $chipper, $this->mode, $iv);
+            $message = openssl_decrypt($this->chiper, $key, $chipper, $this->mode, $iv);
 
             return $message;
         }

@@ -1,8 +1,5 @@
 app/log/*
-!app/log/index.html
 app/info/*
-!app/info/index.html
 public/img_cache/*
-!public/img_cache/index.html
 app/config/encryption.php
 app/config/auth.php

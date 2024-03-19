@@ -1,10 +1,6 @@
 <div class="panel <?php echo (isset($single)?'single':''); ?>">
     <div class="warp">
-        <?php if (isset($single)): ?>
-            <b>Last Read</b>
-        <?php else: ?>
-            <b>My Reading History</b>
-        <?php endif; ?>
+        <b>Last Chapters Read</b>
     </div>
     <div class="<?php echo (isset($single)?'':'warp'); ?>">
     <?php while ($row = $history->row()): ?>
@@ -14,10 +10,10 @@
                 <?php echo (isset($single)?'class="clearfix"':''); ?>>
             <?php if (isset($single)): ?>
                 <div class="left hwarp">
-                    <?php echo page()->mangalib->nameFix($row->chapter, $row->manga); ?>
+                    <?php echo "<b>$row->manga</b> - " . page()->mangalib->nameFix($row->chapter, $row->manga); ?>
                 </div>
                 <div class="right desc">
-                    <?php echo page()->date->relative($row->update_at); ?>
+                    <?php echo "<i><sub>" . page()->date->relative($row->update_at) . "</sub></i>"; ?>
                 </div>
             <?php else: ?>
                 <?php echo page()->mangalib->nameFix($row->chapter, $row->manga); ?>
