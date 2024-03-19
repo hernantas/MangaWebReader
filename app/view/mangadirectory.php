@@ -8,7 +8,12 @@
 
 <div class="clearfix">
     <?php while ($row = $mangalist->row()): ?>
-        <?php page()->load->view('mangadirectory/card'); ?>
+        <?php 
+            page()->load->view('mangadirectory/card', [
+                'row' => $row, 
+                'mangapath' => $mangapath
+            ]);
+        ?>
     <?php endwhile; ?>
 </div>
 
