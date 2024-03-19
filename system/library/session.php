@@ -52,7 +52,7 @@
         public function set($name, $value, $persist=false)
         {
             setcookie($name, $value, time()+($persist?$this->longExpire:$this->expire),
-                page()->uri->subdir());
+                '/');
         }
 
         /**
@@ -75,7 +75,7 @@
          */
         public function remove($name)
         {
-            setcookie($name, '', -1, page()->uri->subdir());
+            setcookie($name, '', -1, '/');
         }
 
         /**

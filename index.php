@@ -31,7 +31,7 @@
      *
      * @var string
      */
-    $environment = 'development';
+    $environment = 'release';
 
     /**
      * Path to System directory where framework vendor is located.
@@ -71,7 +71,7 @@
 
         case 'testing':
         case 'release':
-            error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+            error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_WARNING & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
             break;
 
         default:

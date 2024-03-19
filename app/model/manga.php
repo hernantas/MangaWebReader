@@ -162,7 +162,6 @@
                 ->where('user_history.id_user', $idUser)
                 ->order('user_history.update_at', false)
                 ->group('user_history.id_manga')
-                ->group('user_history.update_at')
                 ->limit($page*$limit, $limit)
                 ->get('manga.*');
         }

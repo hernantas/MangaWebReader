@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mangareader:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - database
+
+  database:
+    image: mariadb:11.2.2
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_DATABASE: mangareader_db
+      MARIADB_USER: mangareader
+      MARIADB_PASSWORD: mangareader
+      MARIADB_ROOT_PASSWORD: mangareader
+    volumes:
+      - database_data:/var/lib/mysql
+
+volumes:
+  database_data:
+    name: db-data

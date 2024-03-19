@@ -8,14 +8,19 @@
 
 <div class="clearfix">
     <?php while ($row = $mangalist->row()): ?>
-        <?php page()->load->view('mangadirectory/card'); ?>
+        <?php 
+            page()->load->view('mangadirectory/card', [
+                'row' => $row, 
+                'mangapath' => $mangapath
+            ]);
+        ?>
     <?php endwhile; ?>
 </div>
 
 <?php if (page()->input->hasGet('search') && $mangaCount === 0): ?>
     <div class="panel single">
         <div class="warp">
-            No manga called "<?php echo page()->input->get('search'); ?>" is found
+            The search for "<?php echo page()->input->get('search'); ?>"  did not find any results.
         </div>
     </div>
 <?php endif; ?>

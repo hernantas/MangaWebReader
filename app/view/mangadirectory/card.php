@@ -17,13 +17,13 @@
         </div>
         <div class="warp">
             <div>
-                Chapters: <?php echo $row->cnt; ?>
+                <b>Chapters:</b> <?php echo $row->cnt; ?>
             </div>
             <div>
-                Views: <?php echo $row->views; ?>
+                <b>Views:</b> <?php echo $row->views; ?>
             </div>
             <div class="desc">
-                <?php echo page()->date->relative($row->update_at); ?>
+                <i><?php echo page()->date->relative($row->update_at); ?></i>
             </div>
         </div>
     </a>

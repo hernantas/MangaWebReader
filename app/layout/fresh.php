@@ -25,7 +25,7 @@
             <?php if (!isset($simpleMode)): ?>
             <div class="search">
                 <?php echo formOpen('manga/search', 'get'); ?>
-                <?php echo inputSearch('search', 'Search for Manga, People or Page...'); ?>
+                <?php echo inputSearch('search', 'Search for Manga...'); ?>
                 <?php echo formClose(); ?>
             </div>
             <?php else: ?>
