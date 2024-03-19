@@ -1,3 +1,4 @@
 RewriteEngine on
 RewriteCond $1 !^(index\.php|favicon.ico|public|docs|robots\.txt)
 RewriteRule ^(.*)$ index.php/$1 [L]
+Options -Indexes
