@@ -12,7 +12,7 @@
                 $nav[] = [[
                     'url'=>'user/profile',
                     'img'=>'catuser48.png',
-                    'text'=>'My Profiles'
+                    'text'=>'My History'
                 ]];
             }
             else
@@ -33,7 +33,7 @@
                 [
                     'url'=>'manga/directory',
                     'img'=>'directory48.png',
-                    'text'=>'Manga Directory'
+                    'text'=>'Manga List'
                 ],
                 [
                     'url'=>'manga/hot',

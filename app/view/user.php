@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="warp">
-        <h3>My Reading List</h3>
+        <h3>Recently Read Mangas</h3>
     </div>
 </div>
 <div class="clearfix">

@@ -20,7 +20,7 @@
 <?php if (page()->input->hasGet('search') && $mangaCount === 0): ?>
     <div class="panel single">
         <div class="warp">
-            No manga called "<?php echo page()->input->get('search'); ?>" is found
+            The search for "<?php echo page()->input->get('search'); ?>"  did not find any results.
         </div>
     </div>
 <?php endif; ?>
